@@ -1,3 +1,4 @@
+// the server code for lab2
 const connect = require('connect');
 const url = require('url');
 const app = connect();
@@ -25,13 +26,13 @@ app.use('/lab2', (req, res) => {
   } else if (method === 'divide') {
     if (y === 0) {
       res.writeHead(400, {'Content-Type': 'application/json'});
-      res.end(JSON.stringify({ error: 'Cannot divide by zero' }));
+      res.end(JSON.stringify({ error: 'Cannot divide by zero' }, null, 2)); // Pretty print error
       return;
     }
     result = x / y;
   } else {
     res.writeHead(400, {'Content-Type': 'application/json'});
-    res.end(JSON.stringify({ error: 'Invalid method' }));
+    res.end(JSON.stringify({ error: 'Invalid method' }, null, 2)); // Pretty print error
     return;
   }
 
@@ -43,8 +44,9 @@ app.use('/lab2', (req, res) => {
     result: result
   };
 
+  // Pretty print the response JSON object
   res.writeHead(200, {'Content-Type': 'application/json'});
-  res.end(JSON.stringify(response));
+  res.end(JSON.stringify(response, null, 2));
 });
 
 // Start the server

@@ -50,3 +50,14 @@ If you try an invalid method (e.g., method=unknown), the server will return an e
   "error": "Invalid method"
 }
 ```
+
+## Output
+The result as a JSON object:-
+```bash
+{
+  "x": "16",
+  "y": "4",
+  "operation": "add",
+  "result": "20"
+}
+```
